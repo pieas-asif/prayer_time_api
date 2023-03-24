@@ -30,9 +30,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Docker build and Push
-        run: cd build
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
           tags: shamansharif/prayer-time-api:latest
+        working-directory: ./build
