@@ -32,8 +32,8 @@ jobs:
       - name: CD into build
         run: cd build
 
-      - name: LA into current
-        run: la
+      - name: LS into current
+        run: ls
 
       - name: Docker build and Push
         uses: docker/build-push-action@v4
