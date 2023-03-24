@@ -29,16 +29,24 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: CD into build
-        run: cd build
-
-      - name: LS into current
-        run: ls
-
       - name: Docker build and Push
         uses: docker/build-push-action@v4
         with:
           context: build
           push: true
           tags: shamansharif/prayer-time-api:latest
-        # working-directory: ./build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: docker pull and up via SSH
+        uses: fifsky/ssh-action@v0.0.6
+        with:
+          command: |
+            cd prayer-time
+            dcp
+            dcud
+          host: ${{ secrets.HOST }}
+          user: root
+          key: ${{ secrets.PRIVATE_KEY}}
