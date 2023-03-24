@@ -45,8 +45,8 @@ jobs:
         with:
           command: |
             cd prayer-time
-            dcp
-            dcud
+            docker compose pull
+            docker compose up -d
           host: ${{ secrets.HOST }}
           user: root
           key: ${{ secrets.PRIVATE_KEY}}
