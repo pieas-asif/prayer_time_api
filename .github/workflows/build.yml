@@ -1,8 +1,6 @@
-name: Build
+name: Build & Deploy
 
 on:
-  pull_request:
-    branches: [main]
   push:
     branches: [main]
 
@@ -21,3 +19,20 @@ jobs:
 
       - name: Building the application
         run: dart_frog build
+
+  dockerize:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/setup-qemu-action@v2
+      - uses: docker/setup-buildx-action@v2
+      - uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/build-push-action@v4
+        with:
+          context: build/
+          push: true
+          tags: shamansharif/prayer-time-api:latest
