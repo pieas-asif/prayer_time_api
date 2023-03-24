@@ -20,6 +20,9 @@ jobs:
       - name: Building the application
         run: dart_frog build
 
+      - name: ls ing the file
+        run: ls
+
       - uses: docker/setup-qemu-action@v2
       - uses: docker/setup-buildx-action@v2
 
