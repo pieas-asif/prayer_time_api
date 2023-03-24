@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dart-lang/setup-dart@v1.5.0
+
+      - name: Installing dart_frog CLI
+        run: dart pub global activate dart_frog_cli
+
+      - name: Fetching dependencies
+        run: dart pub get
+
+      - name: Building the application
+        run: dart_frog build
