@@ -29,10 +29,17 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: CD into build
+        run: cd build
+
+      - name: LA into current
+        run: la
+
       - name: Docker build and Push
         uses: docker/build-push-action@v4
         with:
           context: .
+          file: ./build/Dockerfile
           push: true
           tags: shamansharif/prayer-time-api:latest
-        working-directory: ./build
+        # working-directory: ./build
