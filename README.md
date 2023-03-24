@@ -4,6 +4,8 @@ version: 0.9.0 - Beta
 
 > this API only shows current Sehri & Iftar time for Dhaka, Bangladesh.
 
+## BaseURL
+
 ## Endpoints
 
 > `/prayer-time`

@@ -49,6 +49,7 @@ Response onRequest(RequestContext context) {
       .inDays;
 
   print(calculatedCalenderIndex);
+  final calender = getCalender(cityName: 'Dhaka');
 
   final ramadanTimes = calender[calculatedCalenderIndex];
 

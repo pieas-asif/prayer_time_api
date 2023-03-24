@@ -1,4 +1,4 @@
-List<Map<String, dynamic>> calender = [
+List<Map<String, dynamic>> _calender = [
   {
     'ramadan': 1,
     'date': 'Thu, 3/24/2023',
@@ -150,3 +150,9 @@ List<Map<String, dynamic>> calender = [
     'ramadan_times': {'sehri': '4:07 AM', 'iftar': '6:27 PM'}
   }
 ];
+
+List<Map<String, dynamic>> getCalender({
+  required String cityName,
+}) {
+  return _calender;
+}
