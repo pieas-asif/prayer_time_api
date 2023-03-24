@@ -31,8 +31,8 @@ jobs:
 
       - name: Docker build and Push
         uses: docker/build-push-action@v4
+        working-directory: ./build
         with:
           context: .
-          file: ./build/Dockerfile
           push: true
           tags: shamansharif/prayer-time-api:latest
